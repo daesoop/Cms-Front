@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome soop cms front</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <h1>Welcome!</h1>
+    <div id="app">
+        <h1>{{ product }}</h1>
+        <button v-on:click="fetch">get data</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el : '#app',
+            data : {
+                product : 'Please'
+            },
+            methods : {
+                fetch : function () {
+                    axios
+                        .get("http://localhost:8080/api/user")
+                        .then(function(response) {
+                            alert(response);
+                            console.log(response);
+                        })
+                        .catch(function(error) {
+                            console.log(error);
+                        });                }
+            }
+        })
+    </script>
+</body>
+
+</html>
